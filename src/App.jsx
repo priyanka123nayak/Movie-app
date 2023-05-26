@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { fetchDataForApi } from "./utils/api";
+import { fetchDataFromApi } from "./utils/api";
 import { useSelector, useDispatch } from "react-redux";
 import { getApiConfiguration } from "./store/homeSlice";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
@@ -15,12 +15,17 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    apitesting();
+    fetchApiConfig();
   }, []);
-  const apitesting = () => {
-    fetchDataForApi("/movie/popular").then((res) => {
+  const fetchApiConfig = () => {
+    fetchDataFromApi("/configuration").then((res) => {
       console.log("res: ", res);
-      dispatch(getApiConfiguration(res));
+      const url={
+        backdrop: res.images.secure_base_url + "original",
+        poster: res.images.secure_base_url + "original",
+        profile: res.images.secure_base_url + "original",
+      }
+      dispatch(getApiConfiguration(url));
     });
   };
   return (
