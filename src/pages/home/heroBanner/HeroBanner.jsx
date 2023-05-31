@@ -19,7 +19,6 @@ function HeroBanner() {
   const { url } = useSelector((state) => state.home);
 
   useEffect(() => {
-    console.log("Entering");
     const bg =
       url?.backdrop +
       data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;

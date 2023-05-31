@@ -26,7 +26,6 @@ const Header = () => {
   },[location])
 
   const controlNavbar = () => {
-    console.log("controlNavbar",window.scrollY)
     if(window.scrollY > 200 && !mobileMenu){
       // ----scroll up ----
        if(window.scrollY > lastScrollY) {

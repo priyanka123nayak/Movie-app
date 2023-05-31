@@ -4,7 +4,7 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Img = ({ src, className }) => {
   return (
-    <LazyLoadImage effect="blur" src={src} className={className || ""} alt />
+    <LazyLoadImage effect="blur" src={src} className={className || ""} alt="" />
   );
 };
 export default Img;
