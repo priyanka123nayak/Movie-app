@@ -20,24 +20,23 @@ const Header = () => {
 
   // --------singlePage application(Browser doesnot refresh) , on first page  curser pointer is on scrollY-200px navigate--> scrollY-200px (it's not right)
   // to resolve---scrollY-top on another page
-  useEffect(()=>{
+  useEffect(() => {
     // curse pointer is on top of page
-      window.scrollTo(0,0);
-  },[location])
+    window.scrollTo(0, 0);
+  }, [location]);
 
   const controlNavbar = () => {
-    if(window.scrollY > 200 && !mobileMenu){
+    if (window.scrollY > 200 && !mobileMenu) {
       // ----scroll up ----
-       if(window.scrollY > lastScrollY) {
+      if (window.scrollY > lastScrollY) {
         setShow("hide");
-       }else{
+      } else {
         setShow("show");
-       }
-    }else{
+      }
+    } else {
       setShow("top");
     }
     setLastScrollY(window.scrollY);
-
   };
 
   useEffect(() => {
@@ -74,7 +73,7 @@ const Header = () => {
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
-        <div className="logo">
+        <div className="logo" onClick={() => navigate("/")}>
           <img src={logo} alt="logo" />
         </div>
         <ul className="menuItems">
